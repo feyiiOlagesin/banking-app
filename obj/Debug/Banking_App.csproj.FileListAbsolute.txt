@@ -1,0 +1,7 @@
+C:\Users\Samuel Olagesin\source\repos\Banking_App\bin\Debug\Banking_App.exe.config
+C:\Users\Samuel Olagesin\source\repos\Banking_App\bin\Debug\Banking_App.exe
+C:\Users\Samuel Olagesin\source\repos\Banking_App\bin\Debug\Banking_App.pdb
+C:\Users\Samuel Olagesin\source\repos\Banking_App\obj\Debug\Banking_App.csprojAssemblyReference.cache
+C:\Users\Samuel Olagesin\source\repos\Banking_App\obj\Debug\Banking_App.csproj.CoreCompileInputs.cache
+C:\Users\Samuel Olagesin\source\repos\Banking_App\obj\Debug\Banking_App.exe
+C:\Users\Samuel Olagesin\source\repos\Banking_App\obj\Debug\Banking_App.pdb
