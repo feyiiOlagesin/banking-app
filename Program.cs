@@ -14,7 +14,16 @@ namespace Banking_App
 			Console.WriteLine("what would you like to do?");
 			Console.WriteLine("1. Login");
 			Console.WriteLine("2. Sign Up");
-			StartPage.SignUp();
+			string user_input = Console.ReadLine();
+			switch (user_input)
+			{
+				case "1":
+					StartPage.Login();
+					break;
+				case "2":
+					StartPage.SignUp();
+					break;
+			}
 		}
 	}
 }
