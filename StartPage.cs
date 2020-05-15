@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -36,10 +36,19 @@ namespace Banking_App
 			phone_number = testInt(phone_number);
 
 			//further modification to the password checking methods would be done later
+			//modified it to make sure the length is greater than 8
 			Console.WriteLine("Password (this would be used for subsequent logins");
 			string password = Console.ReadLine();
+			password = testPassword(password);
 		}
 
+		public static void Login()
+		{
+			Console.Write("Username: ");
+			string username = Console.ReadLine();
+			Console.Write("Password: ");
+			string password = Console.ReadLine();
+		}
 
 		private static string testString(string value) {
 			int temp;
@@ -84,12 +93,35 @@ namespace Banking_App
 					Console.WriteLine("Invalid Input, field cannot be empty,\n input your details");
 					value = Console.ReadLine();
 				}
-				else if (!(value.Contains("@") || value.Contains("."))){
+				else if (!(value.Contains("@") && value.Contains("."))){
 					Console.WriteLine("Email must contain character '@' and '.com' or '.co.uk'");
 					Console.WriteLine("E-mail Address");
 					value = Console.ReadLine();
 				}
+				else
+				{
+					break;
+				}
 			}
+			return value;
+		}
+
+		private static string testPassword(string value)
+		{
+			while (true)
+			{
+				if(value.Length < 8) 
+				{
+					Console.WriteLine("Password has to be longer than 8 digits");
+					Console.Write("Password");
+					value = Console.ReadLine();
+				}
+				else
+				{
+					break;
+				}
+			}
+			return value;
 		}
 	}
 }
