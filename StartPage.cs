@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,8 +11,13 @@ namespace Banking_App
 {
 	public class StartPage
 	{
-		public static void SignUp()
+		public static ArrayList SignUp()
 		{
+			List<Account> accounts = new List<Account>();
+			accounts.Add(new Savings("samuel"));
+			accounts.Add(new Current());
+
+
 			Console.WriteLine("Please fill out the form below");
 			Console.WriteLine("First Name");
 			string firstname = Console.ReadLine();
@@ -20,9 +27,21 @@ namespace Banking_App
 			string lastname = Console.ReadLine();
 			lastname = testString(lastname);
 
-			Console.WriteLine("Age");
-			int age = Convert.ToInt32(Console.ReadLine());
-			age = testInt(age);
+			var name = firstname + " " + lastname;
+
+			Console.WriteLine("Date of Birth: Year of Birth");
+			int YearOfBirth = Convert.ToInt32(Console.ReadLine());
+			YearOfBirth = testInt(YearOfBirth);
+
+			Console.WriteLine("Date of Birth: Month of Birth");
+			int MonthOfBirth = Convert.ToInt32(Console.ReadLine());
+			MonthOfBirth = testInt(MonthOfBirth);
+
+			Console.WriteLine("Date of Birth: Month of Birth");
+			int DayOfBirth = Convert.ToInt32(Console.ReadLine());
+			DayOfBirth = testInt(DayOfBirth);
+
+			var Birthdate = new DateTime(YearOfBirth, MonthOfBirth, DayOfBirth);
 
 			Console.WriteLine("Gender");
 			string gender = Console.ReadLine();
@@ -40,6 +59,16 @@ namespace Banking_App
 			Console.WriteLine("Password (this would be used for subsequent logins");
 			string password = Console.ReadLine();
 			password = testPassword(password);
+
+			var details = new ArrayList();
+			details.Add(name);
+			details.Add(Birthdate);
+			details.Add(gender);
+			details.Add(mail_address);
+			details.Add(phone_number);
+			details.Add(password);
+
+			return details;
 		}
 
 		public static void Login()
