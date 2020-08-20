@@ -13,11 +13,6 @@ namespace Banking_App
 	{
 		public static ArrayList SignUp()
 		{
-			List<Account> accounts = new List<Account>();
-			accounts.Add(new Savings("samuel"));
-			accounts.Add(new Current());
-
-
 			Console.WriteLine("Please fill out the form below");
 			Console.WriteLine("First Name");
 			string firstname = Console.ReadLine();

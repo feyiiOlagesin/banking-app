@@ -6,7 +6,7 @@ namespace Banking_App
 	{
 		public override void Deposit(int amount)
 		{
-			Console.WriteLine(Name);
+
 		}
 
 		public override void Withdraw(int amount)

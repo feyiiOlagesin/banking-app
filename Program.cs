@@ -12,30 +12,20 @@ namespace Banking_App
 	{
 		static void Main(string[] args)
 		{
-			List<Account> accounts = new List<Account>();
-			accounts.Add(new Savings("samuel"));
-			accounts.Add(new Current());
-			accounts.Add(new Current());
-			accounts.Add(new Savings("ola"));
-
-			foreach (var item in accounts)
+			Console.WriteLine("Hello, welcome to the Best Bank");
+			Console.WriteLine("what would you like to do?");
+			Console.WriteLine("1. Login");
+			Console.WriteLine("2. Sign Up");
+			string user_input = Console.ReadLine();
+			switch (user_input)
 			{
-				Console.WriteLine(item.Name);
+				case "1":
+					StartPage.Login();
+					break;
+				case "2":
+					StartPage.SignUp();
+					break;
 			}
-			//Console.WriteLine("Hello, welcome to the Best Bank");
-			//Console.WriteLine("what would you like to do?");
-			//Console.WriteLine("1. Login");
-			//Console.WriteLine("2. Sign Up");
-			//string user_input = Console.ReadLine();
-			//switch (user_input)
-			//{
-			//	case "1":
-			//		StartPage.Login();
-			//		break;
-			//	case "2":
-			//		StartPage.SignUp();
-			//		break;
-			//}
 		}
 	}
 }
