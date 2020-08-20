@@ -4,23 +4,54 @@ namespace Banking_App
 {
     public class BankAccounts
 	{
-		Dictionary<int, Account> account1 = new Dictionary<int, Account>();
-		Dictionary<int, Account> account2 = new Dictionary<int, Account>();
-		Dictionary<int, Account> account3 = new Dictionary<int, Account>();
-		Dictionary<int, Account> account4 = new Dictionary<int, Account>();
-		Dictionary<int, Account> account5 = new Dictionary<int, Account>();
-
-
-		public List<Dictionary<int, Account>> GetBankAccounts()
+		public List<Account> ExistingAccounts()
 		{
-			var bankAccountsList = new List<Dictionary<int, Account>>();
-			bankAccountsList.Add(account1);
-			bankAccountsList.Add(account2);
-			bankAccountsList.Add(account3);
-			bankAccountsList.Add(account4);
-			bankAccountsList.Add(account5);
+			var account1 = new Savings()
+			{
+				AccountNumber = 1289281828,
+				Gender = "Male",
+				Mail = "Olagesin@gmail.com",
+				Name = "Samuel Olagesin",
+				PhoneNumber = 0921929391
+			};
 
-			return bankAccountsList;
+			var account2 = new Savings()
+			{
+				AccountNumber = 1289281128,
+				Gender = "Female",
+				Mail = "woman@gmail.com",
+				Name = "Sharon Olagesin",
+				PhoneNumber = 0921929391
+			};
+
+			var account3 = new Current()
+			{
+				AccountNumber = 1289199828,
+				Gender = "Female",
+				Mail = "lady@gmail.com",
+				Name = "stephanie Olagesin",
+				PhoneNumber = 0921929391
+			};
+
+			var customers = new List<Account>();
+			customers.Add(account1);
+			customers.Add(account2);
+			customers.Add(account3);
+
+			return customers;
+		}
+
+		public Dictionary<int, Account> GetBankAccounts()
+		{
+			var existingAccounts = ExistingAccounts();
+
+			Dictionary<int, Account> kvp = new Dictionary<int, Account>();
+
+			foreach (var item in existingAccounts)
+			{
+				kvp.Add(item.AccountNumber, item);
+			}
+			return kvp;
 		}
 
 	}
