@@ -12,6 +12,7 @@ namespace Banking_App
 		public int AccountNumber { get; set; }
 		public double AccountBalance { get; set; }
 		public Account AccountType { get; set; }
+		public string AccountPassword { get; set; }
 
 
 		public abstract void Withdraw(int amount);

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.CodeDom.Compiler;
+using System.Collections.Generic;
 
 namespace Banking_App
 {
@@ -68,6 +69,33 @@ namespace Banking_App
 				}
 			}
 			return currentAccounts;
+		}
+
+		public bool AccountExists(int accountNumber)
+		{
+			var accounts = GetBankAccounts();
+			if (accounts.ContainsKey(accountNumber))
+				return true;
+			return false;
+		}
+
+		public bool AccountLoginMatch(int accountNumber, string password)
+		{
+			var accounts = GetBankAccounts();
+			foreach (var item in accounts.Values)
+			{
+				if((item.AccountNumber == accountNumber) && (item.AccountPassword.Equals(password)))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		public Account returnAccount(int accountNumber)
+		{
+			var accounts = GetBankAccounts();
+			return accounts[accountNumber];
 		}
 
 	}
