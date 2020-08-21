@@ -4,6 +4,7 @@ namespace Banking_App
 {
     public class BankAccounts
 	{
+		Dictionary<int, Account> currentAccounts;
 		public List<Account> ExistingAccounts()
 		{
 			var account1 = new Savings()
@@ -44,14 +45,29 @@ namespace Banking_App
 		public Dictionary<int, Account> GetBankAccounts()
 		{
 			var existingAccounts = ExistingAccounts();
-
-			Dictionary<int, Account> kvp = new Dictionary<int, Account>();
-
-			foreach (var item in existingAccounts)
+			if(currentAccounts.Count == 0)
 			{
-				kvp.Add(item.AccountNumber, item);
+				currentAccounts = new Dictionary<int, Account>();
+				foreach (var item in existingAccounts)
+				{
+					currentAccounts.Add(item.AccountNumber, item);
+				}
 			}
-			return kvp;
+			else
+			{
+				foreach (var item in existingAccounts)
+				{
+					if (currentAccounts.ContainsKey(item.AccountNumber))
+					{
+						continue;
+					}
+					else
+					{
+						currentAccounts.Add(item.AccountNumber, item);
+					}
+				}
+			}
+			return currentAccounts;
 		}
 
 	}

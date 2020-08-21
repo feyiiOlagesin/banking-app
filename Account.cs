@@ -10,13 +10,15 @@ namespace Banking_App
 		public string Mail { get; set; }
 		public int PhoneNumber { get; set; }
 		public int AccountNumber { get; set; }
+		public double AccountBalance { get; set; }
+		public Account AccountType { get; set; }
 
 
 		public abstract void Withdraw(int amount);
 
 		public abstract void Deposit(int amount);
 
-
+		public abstract double GetAccountBalance();
 	}
 }
 	

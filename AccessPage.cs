@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Banking_App
 {
-	public class StartPage
+	public class AccessPage
 	{
 		public static ArrayList SignUp()
 		{
@@ -68,12 +68,15 @@ namespace Banking_App
 
 		public static void Login()
 		{
-			Console.Write("Username: ");
+			Console.Write("Account Number: ");
 			string username = Console.ReadLine();
 			Console.Write("Password: ");
 			string password = Console.ReadLine();
+
 		}
 
+
+		// Test Methods
 		private static string testString(string value) {
 			int temp;
 			while (true)
