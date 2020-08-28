@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Banking_App
 {
-    public class BankAccounts
+	public class BankAccounts : IBankAccounts
 	{
 		Dictionary<int, Account> currentAccounts;
 		public List<Account> ExistingAccounts()

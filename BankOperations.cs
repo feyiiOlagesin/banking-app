@@ -11,18 +11,15 @@ namespace Banking_App
 			Console.WriteLine("1. Login");
 			Console.WriteLine("2. Sign Up");
 			string user_input = Console.ReadLine();
-			switch (user_input)
+			if(user_input.Equals("1"))
 			{
-				case "1":
-					AccessPage.Login();
-					break;
-				case "2":
-					var signupDetails = AccessPage.SignUp();
-					break;
+				var loginDetails = AccessPage.Login(new BankAccounts());
+			}
+			else
+			{
+				var signupDetails = AccessPage.SignUp();
 			}
 		}
-
-
-}
+	}
 }
 	
