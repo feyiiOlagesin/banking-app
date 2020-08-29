@@ -2,11 +2,11 @@
 {
     public interface IBankAccounts
 	{
-		bool AccountExists(int accountNumber);
+		bool AccountExists(string accountNumber);
 
-		bool AccountLoginMatch(int accountNumber, string password);
+		bool AccountLoginMatch(string accountNumber, string password);
 
-		Account returnAccount(int accountNumber);
+		Account returnAccount(string accountNumber);
 	}
 }
 	

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace Banking_App
 {
 	public class AccessPage
 	{
-		public static ArrayList SignUp()
+		public static Account SignUp()
 		{
 			Console.WriteLine("Please fill out the form below");
 			Console.WriteLine("First Name");
@@ -49,28 +50,60 @@ namespace Banking_App
 			int phone_number = Convert.ToInt32(Console.ReadLine());
 			phone_number = testInt(phone_number);
 
-			//further modification to the password checking methods would be done later
 			//modified it to make sure the length is greater than 8
 			Console.WriteLine("Password (this would be used for subsequent logins");
 			string password = Console.ReadLine();
 			password = testPassword(password);
 
-			var details = new ArrayList();
-			details.Add(name);
-			details.Add(Birthdate);
-			details.Add(gender);
-			details.Add(mail_address);
-			details.Add(phone_number);
-			details.Add(password);
+			Console.WriteLine("Account Type: \n 1. Savings Account\n 2. Current Account");
+			var account_type = Console.ReadLine();
+			var accountObject = ReturnAccountType(account_type, name, Birthdate, gender, mail_address, phone_number, password);
 
-			return details;
+			return accountObject;
+		}
+
+		private static Account ReturnAccountType(string account_type, string name, DateTime birthdate, string gender, string mail_address, int phone_number, string password)
+		{
+			Random random = new Random();
+				if (account_type.Equals("1"))
+				{
+					var savings = new Savings()
+					{
+						Name = name,
+						Birthdate = birthdate,
+						Gender = gender,
+						Mail = mail_address,
+						PhoneNumber = phone_number,
+						AccountPassword = password,
+						AccountBalance = 0.0,
+						AccountNumber = "02" + Convert.ToInt32(random.Next(19999999, 99999999)),
+						AccountType = "Savings"
+					};
+				return savings;
+			}
+			else
+			{
+				var current = new Current()
+				{
+					Name = name,
+					Birthdate = birthdate,
+					Gender = gender,
+					Mail = mail_address,
+					PhoneNumber = phone_number,
+					AccountPassword = password,
+					AccountBalance = 0.0,
+					AccountNumber = "02" + Convert.ToInt32(random.Next(19999999, 99999999)),
+					AccountType = "Savings"
+				};
+				return current;
+			}
 		}
 
 		public static Account Login(IBankAccounts bankAccounts)
 		{
 			Console.WriteLine("Login \n \n");
 			Console.Write("Account Number: ");
-			int accountNumber = Convert.ToInt32(Console.ReadLine());
+			string accountNumber = Console.ReadLine();
 			Console.Write("Password: ");
 			string password = Console.ReadLine();
 			var checkExistence = bankAccounts.AccountExists(accountNumber);
@@ -85,7 +118,6 @@ namespace Banking_App
 			}
 			return null;
 		}
-
 
 		// Test Methods
 		private static string testString(string value) {

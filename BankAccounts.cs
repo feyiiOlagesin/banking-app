@@ -5,12 +5,13 @@ namespace Banking_App
 {
 	public class BankAccounts : IBankAccounts
 	{
-		Dictionary<int, Account> currentAccounts;
+		Dictionary<string, Account> currentAccounts;
 		public List<Account> ExistingAccounts()
 		{
 			var account1 = new Savings()
 			{
-				AccountNumber = 1289281828,
+				AccountNumber = "0289281828",
+				AccountPassword = "ola",
 				Gender = "Male",
 				Mail = "Olagesin@gmail.com",
 				Name = "Samuel Olagesin",
@@ -19,7 +20,8 @@ namespace Banking_App
 
 			var account2 = new Savings()
 			{
-				AccountNumber = 1289281128,
+				AccountNumber = "0289281128",
+				AccountPassword = "ola2",
 				Gender = "Female",
 				Mail = "woman@gmail.com",
 				Name = "Sharon Olagesin",
@@ -28,7 +30,8 @@ namespace Banking_App
 
 			var account3 = new Current()
 			{
-				AccountNumber = 1289199828,
+				AccountNumber = "0289199828",
+				AccountPassword = "ola1",
 				Gender = "Female",
 				Mail = "lady@gmail.com",
 				Name = "stephanie Olagesin",
@@ -43,12 +46,12 @@ namespace Banking_App
 			return customers;
 		}
 
-		public Dictionary<int, Account> GetBankAccounts()
+		public Dictionary<string, Account> GetBankAccounts()
 		{
 			var existingAccounts = ExistingAccounts();
-			if(currentAccounts.Count == 0)
+			if(currentAccounts is null)
 			{
-				currentAccounts = new Dictionary<int, Account>();
+				currentAccounts = new Dictionary<string, Account>();
 				foreach (var item in existingAccounts)
 				{
 					currentAccounts.Add(item.AccountNumber, item);
@@ -71,7 +74,7 @@ namespace Banking_App
 			return currentAccounts;
 		}
 
-		public bool AccountExists(int accountNumber)
+		public bool AccountExists(string accountNumber)
 		{
 			var accounts = GetBankAccounts();
 			if (accounts.ContainsKey(accountNumber))
@@ -79,7 +82,7 @@ namespace Banking_App
 			return false;
 		}
 
-		public bool AccountLoginMatch(int accountNumber, string password)
+		public bool AccountLoginMatch(string accountNumber, string password)
 		{
 			var accounts = GetBankAccounts();
 			foreach (var item in accounts.Values)
@@ -92,7 +95,7 @@ namespace Banking_App
 			return false;
 		}
 
-		public Account returnAccount(int accountNumber)
+		public Account returnAccount(string accountNumber)
 		{
 			var accounts = GetBankAccounts();
 			return accounts[accountNumber];
