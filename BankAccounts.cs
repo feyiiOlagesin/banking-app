@@ -15,7 +15,8 @@ namespace Banking_App
 				Gender = "Male",
 				Mail = "Olagesin@gmail.com",
 				Name = "Samuel Olagesin",
-				PhoneNumber = 0921929391
+				PhoneNumber = 0921929391,
+				AccountBalance = 89000
 			};
 
 			var account2 = new Savings()

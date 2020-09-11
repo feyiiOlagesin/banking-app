@@ -4,7 +4,7 @@ namespace Banking_App
 {
     public class Current : Account
 	{
-		public override void Deposit(int amount)
+		public override void Deposit(Account user, int amount)
 		{
 			if(amount < 100.0 || amount > 20000)
 			{
@@ -12,27 +12,27 @@ namespace Banking_App
 			}
 			else
 			{
-				AccountBalance = amount + AccountBalance;
+				user.AccountBalance = amount + user.AccountBalance;
 				Console.WriteLine("Transaction Successful");
 			}
 		}
 
-		public override void Withdraw(int amount)
+		public override void Withdraw(Account user, int amount)
 		{
-			if(AccountBalance < amount)
+			if(user.AccountBalance < amount)
 			{
 				Console.WriteLine("Insufficient Funds Available");
 			}
 			else
 			{
-				AccountBalance = AccountBalance - amount;
+				user.AccountBalance = user.AccountBalance - amount;
 				Console.WriteLine("Transaction Successful");
 			}
 		}
 
-		public override double GetAccountBalance()
+		public override double GetAccountBalance(Account user)
 		{
-			return AccountBalance;
+			return user.AccountBalance;
 		}
 
 

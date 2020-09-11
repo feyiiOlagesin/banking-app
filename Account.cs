@@ -15,11 +15,11 @@ namespace Banking_App
 		public string AccountPassword { get; set; }
 
 
-		public abstract void Withdraw(int amount);
+		public abstract void Withdraw(Account user, int amount);
 
-		public abstract void Deposit(int amount);
+		public abstract void Deposit(Account user, int amount);
 
-		public abstract double GetAccountBalance();
+		public abstract double GetAccountBalance(Account user);
 	}
 }
 	

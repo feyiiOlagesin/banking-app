@@ -31,7 +31,7 @@ namespace Banking_App
 				}
 				else
 				{
-					Console.WriteLine("This account doesn't exist");
+					Console.WriteLine("This account doesn't exist \n \n");
 					BankOperations temp = new BankOperations();
 					temp.LandingPage();
 					return null;
