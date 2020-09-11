@@ -99,21 +99,16 @@ namespace Banking_App
 			}
 		}
 
-		public static Account Login(IBankAccounts bankAccounts)
+		public static Account Login(IBankAccounts bankAccounts, string accountNumber, string password)
 		{
-			Console.WriteLine("Login \n \n");
-			Console.Write("Account Number: ");
-			string accountNumber = Console.ReadLine();
-			Console.Write("Password: ");
-			string password = Console.ReadLine();
 			var checkExistence = bankAccounts.AccountExists(accountNumber);
 			if (checkExistence)
 			{
 				var checkDetails = bankAccounts.AccountLoginMatch(accountNumber, password);
 				if (checkDetails)
 				{
-					var acc = bankAccounts.returnAccount(accountNumber);
-					return acc;
+					var UserAccount = bankAccounts.returnAccount(accountNumber);
+					return UserAccount;
 				}
 			}
 			return null;
