@@ -62,7 +62,7 @@ namespace Banking_App
 			return accountObject;
 		}
 
-		private static Account ReturnAccountType(string account_type, string name, DateTime birthdate, string gender, string mail_address, int phone_number, string password)
+		public static Account ReturnAccountType(string account_type, string name, DateTime birthdate, string gender, string mail_address, int phone_number, string password)
 		{
 			Random random = new Random();
 				if (account_type.Equals("1"))
@@ -81,7 +81,7 @@ namespace Banking_App
 					};
 				return savings;
 			}
-			else
+			else if(account_type.Equals("2"))
 			{
 				var current = new Current()
 				{
@@ -93,9 +93,13 @@ namespace Banking_App
 					AccountPassword = password,
 					AccountBalance = 0.0,
 					AccountNumber = "02" + Convert.ToInt32(random.Next(19999999, 99999999)),
-					AccountType = "Savings"
+					AccountType = "Current"
 				};
 				return current;
+			}
+			else
+			{
+				return null;
 			}
 		}
 
