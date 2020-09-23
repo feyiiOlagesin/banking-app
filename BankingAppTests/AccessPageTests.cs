@@ -38,5 +38,21 @@ namespace BankingAppTests
 
             Assert.That(accountType, Is.Null);
         }
+
+        [Test]
+        public void Login_IfAccountExists_ReturnAccount()
+        {
+            var temp = AccessPage.Login(new BankAccounts(), "0289281828", "ola");
+
+            Assert.That(temp, Is.Not.Null);
+        }
+
+        [Test]
+        public void Login_IfAccountDoesNotExist_ReturnNull()
+        {
+            var temp = AccessPage.Login(new BankAccounts(), "0289223998", "whatever");
+
+            Assert.That(temp, Is.Null);
+        }
     }
 }

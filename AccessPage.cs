@@ -103,6 +103,8 @@ namespace Banking_App
 			}
 		}
 
+		// the interface is applied so as to reduce tight coupling between the method and bankAccounts
+		// You can change it if you want, it's quite flexible.... i think.
 		public static Account Login(IBankAccounts bankAccounts, string accountNumber, string password)
 		{
 			var checkExistence = bankAccounts.AccountExists(accountNumber);
